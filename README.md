@@ -2,7 +2,7 @@
 
 # demoday-fullstack-express
 
-![Demo Day Project](public/img/frontPagePic.png)
+![Demo Day Project](public/thumbnail.jpg)
 
 
 
