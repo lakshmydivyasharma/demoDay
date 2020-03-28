@@ -1,0 +1,24 @@
+.container{
+  color: white;
+  background-color: #707070;
+  font-family: 'Oswald', sans-serif;
+  margin-top: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+h1{
+  color: #af7ee4;
+}
+
+.btn-warning{
+  background-color: #af7ee4;
+}
+
+.btn-warning:hover{
+  background: #af7ee4;
+}
+
+a{
+  color: #af7ee4;
+}

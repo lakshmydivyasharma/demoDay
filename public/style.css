@@ -5,3 +5,45 @@ body{
 img{
   height: 200px;
 }
+
+h3{
+  color: #af7ee4;
+  font-family: 'Oswald', sans-serif;
+}
+
+h2{
+font-family: 'Oswald', sans-serif;
+}
+
+.jumbotron{
+  background-color: #707070;
+  font-family: 'Oswald', sans-serif;
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+
+.jumbotron h1{
+  color: #af7ee4;
+  font-family: 'Oswald', sans-serif;
+}
+
+.jumbotron h2{
+  color: white;
+}
+
+h3{
+  text-align: left;
+  margin-top: 0px;
+}
+
+h3 span i{
+  color: #af7ee4;
+  -webkit-animation-name: spin;
+  -webkit-animation-duration: 4000ms;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+
+.btn{
+  margin-top: 20px;
+}

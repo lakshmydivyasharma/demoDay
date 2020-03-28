@@ -1,0 +1,16 @@
+.container{
+  color: white;
+  background-color: #707070;
+  font-family: 'Oswald', sans-serif;
+  margin-top: 50px;
+  padding-top: 20px;
+  padding-bottom: 400px;
+}
+
+h1, h3{
+  color: #af7ee4;
+}
+
+button, .btn{
+  color: #af7ee4;
+}

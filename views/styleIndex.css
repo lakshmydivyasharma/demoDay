@@ -1,0 +1,24 @@
+html{
+  font-size: 10px;
+}
+
+body{
+  background-color: #444242;
+  color: #af7ee4;
+}
+
+.main{
+  text-align: center;
+}
+
+h2{
+  color: white;
+}
+
+h3 span i{
+   font-size: 2rem;
+   -webkit-animation-name: spin;
+   -webkit-animation-duration: 4000ms;
+   -webkit-animation-iteration-count: infinite;
+   -webkit-animation-timing-function: linear;
+}

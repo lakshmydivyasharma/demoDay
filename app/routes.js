@@ -1,5 +1,13 @@
 module.exports = function(app, passport, db) {
 
+app.get('/draw', )
+// find one thats rendereing a template and start there
+
+// create another route for API to retreive a compound
+// put the object here, so itll be a JS object
+// endpoint thats starting the data --> creating a route that the API is sending a request to and thats where it gets the data  
+
+
 // normal routes ===============================================================
 
     // show the home page (will also have our login links)
