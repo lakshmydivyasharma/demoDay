@@ -1,11 +1,11 @@
 module.exports = function(app, passport, db) {
-
+const ObjectID = require('mongodb').ObjectID
 app.get('/draw', )
 // find one thats rendereing a template and start there
 
 // create another route for API to retreive a compound
 // put the object here, so itll be a JS object
-// endpoint thats starting the data --> creating a route that the API is sending a request to and thats where it gets the data  
+// endpoint thats starting the data --> creating a route that the API is sending a request to and thats where it gets the data
 
 
 // normal routes ===============================================================
@@ -17,11 +17,11 @@ app.get('/draw', )
 
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
-        db.collection('messages').find().toArray((err, result) => {
+        db.collection('messages').find().toArray((err, result) => { //callback function
           if (err) return console.log(err)
           res.render('profile.ejs', {
-            user : req.user,
-            messages: result
+            user : req.user, // this is the data object we are passing to the template
+            messages: result // array of messages that we are looking in the database
           })
         })
     });
@@ -127,7 +127,18 @@ app.get('/draw', )
         });
     });
 
-};
+// routes for each lab
+app.get('/lab/:id', function(req, res) {
+  const id = req.params.id //got the id off the request
+  db.collection('messages').findOne( // gave us all the data that the ID refers to
+    { _id: new ObjectID(id) } // object literals
+  ).then((result) => {    //write .then after you do the function call .then is also a function
+        console.log(result)
+    res.render('lab.ejs', { lab: result}) //return the property from the fineOne function LAB INFO GOT SWITCHED TO RESULT BC OF LINE 135
+
+  }).catch (err => console.log(err))
+});
+}
 
 // route middleware to ensure user is logged in
 function isLoggedIn(req, res, next) {
