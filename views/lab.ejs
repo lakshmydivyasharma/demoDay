@@ -6,17 +6,52 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link rel="stylesheet" href="stylelogin.css">
+    <link rel="stylesheet" href="../stylelogin.css">
+    <script src="../p5.js" type="text/javascript"></script>
 </head>
 <body>
 <!-- without = is for if / for statements ()
   with = its a value you are writing to the page  -->
-<!--
+
 <%= lab.msg%>
-        <%# COMMENT: message is the lab name  %>
 
-<%# need a div or section to add the canvas in
-  event listener to listen for canvas events
+<div class="">
+  <select id="moleculeList" class="" name="dropdownMolecules">
+    <option value="benzeneAlcohol.png">Benzene Alcohol</option>
+    <option value="hydrochloricAcid.jpg">Hydrochloric Acid</option>
+  </select>
+</div>
 
-  look up a tutorial on how to use canvas
-then add a script to add a JS  %> -->
+
+
+<%# COMMENT: message is the lab name  %>
+
+<%# need a div or section to add the canvas in event listener to listen for canvas events look up a tutorial on how to use canvas
+then add a script to add a JS  %>
+
+<script type="text/javascript">
+
+document.querySelector("#moleculeList").addEventListener("change", function (event) {
+  console.log("hello", event.target.value)
+
+  loadImage('../img/' + event.target.value, img => {
+    image(img, 0, 0);
+      });
+})
+
+
+function setup() {
+  createCanvas(640, 480);
+}
+
+function draw() {
+  if (mouseIsPressed) {
+    fill(0);
+  } else {
+    fill(255);
+  }
+  ellipse(mouseX, mouseY, 80, 80);
+}
+</script>
+</body>
+</html>
