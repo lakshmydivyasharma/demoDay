@@ -16,44 +16,5 @@
 <%= lab.msg%>
 
 
-<div class="">
-  <select id="moleculeList" class="" name="dropdownMolecules">
-    <option value="benzeneAlcohol.png">Benzene Alcohol</option>
-    <option value="hydrochloricAcid.jpg">Hydrochloric Acid</option>
-  </select>
-</div>
-
-
-
-<%# COMMENT: message is the lab name  %>
-
-<%# need a div or section to add the canvas in event listener to listen for canvas events look up a tutorial on how to use canvas
-then add a script to add a JS  %>
-
-<script type="text/javascript">
-
-
-document.querySelector("#moleculeList").addEventListener("change", function (event) {
-  console.log("hello", event.target.value)
-
-  loadImage('../img/' + event.target.value, img => {
-    image(img, 0, 0);
-      });
-})
-
-
-function setup() {
-  createCanvas(640, 480);
-}
-
-function draw() {
-  if (mouseIsPressed) {
-    fill(0);
-  } else {
-    fill(255);
-  }
-  ellipse(mouseX, mouseY, 80, 80);
-}
-</script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 # demoday-fullstack-express
 
 ![Demo Day Project](public/thumbnail.png)
+![Demo Day Project](public/thumbnail2.png)
 
 
 ## Installation
