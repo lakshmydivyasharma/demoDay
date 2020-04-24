@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <title>Demo Day</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="/molecule.css">
+    <script src="/p5.js" type="text/javascript"></script>
+    <!-- O -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <link rel="stylesheet" href="/report.css">
+    <script>let report = <%- JSON.stringify(report) %></script>
+        <!-- O -->
+</head>
+<body>
+<!-- without = is for if / for statements ()
+  with = its a value you are writing to the page  -->
+
+  <textarea class="labTitle" placeholder="Lab Title"><%= report.labTitle %></textarea>
+  <div id="sections">
+    <% for(var i=0; i< report.sections.length; i++) {%>
+      <div class="section" id="<%= report.sections[i].id %>">
+        <%   if(report.sections[i].type == 'title'){ %>
+             <h2 contenteditable="true" class="sectionTitle sectionText"><%= report.sections[i].text %></h2>
+        <%   }else if(report.sections[i].type == 'body'){%>
+             <p contenteditable="true" class="sectionBody sectionText"><%= report.sections[i].text %></p>
+          <% }%>
+          <%- report.sections[i].rxnImg %>
+          <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+      </div>
+        <% } %>
+
+  </div>
+
+  <button id="addSectionTitle" type="button" name="addSection">Add Section Title</button>
+  <button id="addSectionBody" type="button" name="addSection">Add Section Body</button>
+  <button type="button" name="button">Add Reaction Image</button><br>
+  <button id="saveReport" type="button" name="button">Save Report</button>
+  <script src="/report.js" type="text/javascript"></script>
+</body>
+</html>

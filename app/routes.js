@@ -17,11 +17,11 @@ module.exports = function(app, passport, db) {
 
   // PROFILE SECTION =========================
   app.get('/profile', isLoggedIn, function(req, res) {
-    db.collection('messages').find().toArray((err, result) => { //callback function
+    db.collection('reports').find().toArray((err, result) => { //callback function
       if (err) return console.log(err)
       res.render('profile.ejs', {
         user : req.user, // this is the data object we are passing to the template
-        messages: result // array of messages that we are looking in the database
+        reports: result // array of reports that we are looking in the database
       })
     })
   });
@@ -33,17 +33,17 @@ module.exports = function(app, passport, db) {
   });
 
   // message board routes ===============================================================
-
-  app.post('/messages', (req, res) => {
-    db.collection('messages').save({name: req.body.name, msg: req.body.msg, thumbUp: 0, thumbDown:0}, (err, result) => {
-      if (err) return console.log(err)
-      console.log('saved to database')
+  app.post('/reports', function(req, res) {
+    db.collection('report').insert(
+      {username: req.user.local.email, labTitle: req.body.labTitle, sections: []}
+    ).then((result) => {
+      console.log(result)
       res.redirect('/profile')
-    })
-  })
+    }).catch (err => console.log(err))
+  });
 
-  app.put('/messages', (req, res) => {
-    db.collection('messages')
+  app.put('/reports', (req, res) => {
+    db.collection('reports')
     .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
       $set: {
         thumbUp:req.body.thumbUp + 1
@@ -58,8 +58,8 @@ module.exports = function(app, passport, db) {
   })
 
 
-  app.delete('/messages', (req, res) => {
-    db.collection('messages').findOneAndDelete({name: req.body.name, msg: req.body.msg}, (err, result) => {
+  app.delete('/reports', (req, res) => {
+    db.collection('reports').findOneAndDelete({name: req.body.name, msg: req.body.msg}, (err, result) => {
       if (err) return res.send(500, err)
       res.send('Message deleted!')
     })
@@ -80,7 +80,7 @@ module.exports = function(app, passport, db) {
   app.post('/login', passport.authenticate('local-login', {
     successRedirect : '/profile', // redirect to the secure profile section
     failureRedirect : '/login', // redirect back to the signup page if there is an error
-    failureFlash : true // allow flash messages
+    failureFlash : true // allow flash reports
   }));
 
   // SIGNUP =================================
@@ -93,7 +93,7 @@ module.exports = function(app, passport, db) {
   app.post('/signup', passport.authenticate('local-signup', {
     successRedirect : '/profile', // redirect to the secure profile section
     failureRedirect : '/signup', // redirect back to the signup page if there is an error
-    failureFlash : true // allow flash messages
+    failureFlash : true // allow flash reports
   }));
 
   // =============================================================================
@@ -116,7 +116,7 @@ module.exports = function(app, passport, db) {
   // routes for each lab
   app.get('/lab/:id', function(req, res) {
     const id = req.params.id //got the id off the request
-    db.collection('messages').findOne( // gave us all the data that the ID refers to
+    db.collection('reports').findOne( // gave us all the data that the ID refers to
       { _id: new ObjectID(id) } // object literals
     ).then((result) => {    //write .then after you do the function call .then is also a function
       console.log(result)
@@ -127,8 +127,8 @@ module.exports = function(app, passport, db) {
 
 
   app.put('/lab', (req, res) => {
-    db.collection('messages')
-  .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, { //find the one by searching for the ID; req.body.id --> when we call the API, the molecule.js, whatever we pass in as a body is going to be like an object it hsould have the idea and thats where the request comes from
+    db.collection('reports')
+    .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, { //find the one by searching for the ID; req.body.id --> when we call the API, the molecule.js, whatever we pass in as a body is going to be like an object it hsould have the idea and thats where the request comes from
       $set: {
         smiles:req.body.smiles // same as line 131, basically an object like id and smart. search forr rdb entrey and smart to update database entry
       }
@@ -137,6 +137,32 @@ module.exports = function(app, passport, db) {
       if (err) return res.send(err)
       res.send(result)
     })
+  })
+
+  app.get('/report/:id', (req, res) => {
+    const id = req.params.id //got the id off the request
+    db.collection('reports').findOne( // gave us all the data that the ID refers to
+      { _id: new ObjectID(id) } // object literals
+    ).then((result) => {    //write .then after you do the function call .then is also a function
+      console.log(result)
+      res.render('report.ejs', { report: result}) //return the property from the fineOne function LAB INFO GOT SWITCHED TO RESULT BC OF LINE 135
+
+    }).catch (err => console.log(err))
+  }
+)
+
+  app.put('/report', (req, res, next) => {
+    req.body._id = new ObjectID(req.body._id)
+    db.collection('reports').findOneAndReplace( // gave us all the data that the ID refers to
+      { _id: new ObjectID(req.body._id) }, // object literals
+      req.body,
+      (err, result) => {
+        console.log(result)
+        console.log(err)
+        if (err) return res.send(err)
+        res.send(result)
+      })
+
   })
 }
 // route middleware to ensure user is logged in
