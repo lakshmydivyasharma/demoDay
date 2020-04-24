@@ -10,3 +10,8 @@ textarea{
 .sectionTitle, .sectionBody{
   border: 2px solid black;
 }
+
+#moleculeBoard{
+  width: 100%;
+  display: none;
+}

@@ -23,7 +23,7 @@
 <!-- without = is for if / for statements ()
   with = its a value you are writing to the page  -->
 
-  <textarea class="labTitle" placeholder="Lab Title"><%= report.labTitle %></textarea>
+  <textarea class="labTitle" name="title" placeholder=""><%= report.msg %></textarea>
   <div id="sections">
     <% for(var i=0; i< report.sections.length; i++) {%>
       <div class="section" id="<%= report.sections[i].id %>">
@@ -41,8 +41,18 @@
 
   <button id="addSectionTitle" type="button" name="addSection">Add Section Title</button>
   <button id="addSectionBody" type="button" name="addSection">Add Section Body</button>
-  <button type="button" name="button">Add Reaction Image</button><br>
+  <button id="addReactionImage" type="button" name="button">Add Reaction Image</button><br>
   <button id="saveReport" type="button" name="button">Save Report</button>
-  <script src="/report.js" type="text/javascript"></script>
+  <script src="/report.js" type="text/javascript"></script><br>
+
+  <div class="" id="moleculeBoard">
+    <button id="saveMolecule" type="button" name="button">Save Drawing</button>
+    <iframe width="100%" height="600" id="ketcher-frame" src="/ketcher.html" scrolling="no">
+    </iframe>
+
+
+
+    <script src="/molecule.js" type="text/javascript"></script>
+  </div>
 </body>
 </html>

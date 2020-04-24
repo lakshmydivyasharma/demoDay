@@ -30,6 +30,33 @@ function addNewSection (type) { //this function adds a new section
   })
 }
 
+function addNewImage (molfile) { //this function adds a new section
+  const sections = document.getElementById('sections')
+  const div = document.createElement('div')
+  div.className = 'section'
+  const sectionElement = document.createElement(tags['svg']) // need to provide tag, so we are using tags as a look up in tags the kind of element that we want for this section type
+  sectionElement.className = `section${toTitleCase(type)}`
+  sectionElement.setAttribute('contenteditable', 'true')
+  sectionElement.innerText = type
+  const span = document.createElement('span')
+  const icon = document.createElement('i')
+  icon.classList.add('fa', 'fa-trash')
+  icon.setAttribute('aria-hidden', 'true')
+
+  span.appendChild(icon)
+  div.appendChild(sectionElement)
+  div.appendChild(span)
+  sections.appendChild(div)
+  const section = {position: report.sections.length, id:report.nextId, text: molfile, type: type}
+  report.nextId+=1
+  report.sections.push(section)
+  // sectionElement.addEventListener("blur",() =>{
+  //   section.text = sectionElement.innerText
+  //   console.log(sectionElement.innerText)
+  // })
+}
+
+
 document.querySelectorAll('.sectionText').forEach((sectionElement) => {
   let relevantSection = null
   const sectionId = parseInt(sectionElement.parentElement.id)
@@ -77,4 +104,8 @@ document.getElementById('saveReport').addEventListener('click', () =>{
     alert("Error!")
     console.log(e)
   })
+})
+
+document.getElementById('addReactionImage').addEventListener('click',() => {
+  document.getElementById('moleculeBoard').style.display = 'inline-block'
 })

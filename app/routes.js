@@ -153,6 +153,7 @@ module.exports = function(app, passport, db) {
 
   app.put('/report', (req, res, next) => {
     req.body._id = new ObjectID(req.body._id)
+    console.log(req.body)
     db.collection('reports').findOneAndReplace( // gave us all the data that the ID refers to
       { _id: new ObjectID(req.body._id) }, // object literals
       req.body,
