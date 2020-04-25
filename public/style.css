@@ -1,49 +1,58 @@
 body{
-  padding-top:80px;
-  word-wrap:break-word;
-}
-img{
-  height: 200px;
-}
-
-h3{
-  color: #af7ee4;
-  font-family: 'Oswald', sans-serif;
-}
-
-h2{
-font-family: 'Oswald', sans-serif;
-}
-
-.jumbotron{
-  background-color: #707070;
-  font-family: 'Oswald', sans-serif;
-  padding-top: 200px;
-  padding-bottom: 200px;
-}
-
-.jumbotron h1{
-  color: #af7ee4;
-  font-family: 'Oswald', sans-serif;
-}
-
-.jumbotron h2{
+  background-image: linear-gradient(#074ca5, #03256c);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
   color: white;
 }
 
-h3{
-  text-align: left;
-  margin-top: 0px;
+h1{
+  text-align: center;
+  padding-top: 14%;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 50px;
+  margin-bottom: 40px;
 }
 
-h3 span i{
-  color: #af7ee4;
-  -webkit-animation-name: spin;
-  -webkit-animation-duration: 4000ms;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
+h1 span{
+  margin-right: 20px;
 }
 
-.btn{
+h2{
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+}
+
+p{
+  text-align: center;
   margin-top: 20px;
+}
+
+#landingPageLogin{
+  background-color: transparent;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  height: 77px;
+  width: 190px;
+  border: 1px solid #FFFFFF;
+  border-radius: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+#landingPageSignUp{
+  height: 77px;
+  width: 222px;
+  border-radius: 20px;
+  background-color: #E6E6E6;
+  border: 1px solid #FFFFFF;
+  border-radius: 20px;
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+  color: #03256C;
+  margin-left: 20px;
+  text-align: center;
 }
