@@ -131,10 +131,13 @@ document.getElementById('addSectionTitle').addEventListener('click',() => {
 document.getElementById('addSectionBody').addEventListener('click',() => {
   addNewSection('body')
 })
-document.getElementById('addReactionImage').addEventListener('click',() => {
-  addNewSection('img')
-})
 document.getElementById('saveReport').addEventListener('click', () =>{
+  const serializer = new XMLSerializer();
+  const svg = serializer.serializeToString(document.getElementById('ketcher-frame').contentWindow.document.getElementById("canvas").childNodes[0]);
+// now you can use svg to save to the database as rxnImg
+  const section = {position: report.sections.length, id:report.nextId, text: "", type: 'img', rxnImg: svg}
+  report.nextId+=1
+  report.sections.push(section)
   console.log(JSON.stringify(report))
   //doing a fetch thats NOT a get, set a content type
   fetch(`/report`, {
@@ -153,26 +156,6 @@ document.getElementById('saveReport').addEventListener('click', () =>{
   })
 })
 
-// document.getElementById('addReactionImage').addEventListener('click',() => {
-//   document.getElementById('moleculeBoard').style.display = 'inline-block'
-// })
-
-// document.getElementById('saveMolecule').addEventListener('click', () =>{
-//   const svg = document.getElementById('canvas').childNodes[0]
-//   console.log(JSON.stringify(svg))
-//   //doing a fetch thats NOT a get, set a content type
-//   fetch(`/report`, {
-//     method: 'PUT',
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(report)
-//   }).then((response)=>{
-//     // alert("Report Saved!")
-//     window.location.reload()
-//   })
-//   .catch((e)=>{
-//     // alert("Error!")
-//     console.log(e)
-//   })
-// })
+document.getElementById('addReactionImage').addEventListener('click',() => {
+  document.getElementById('moleculeBoard').style.display = 'inline-block'
+})

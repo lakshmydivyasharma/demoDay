@@ -42,6 +42,19 @@ module.exports = function(app, passport, db) {
       res.send('Message deleted!')
     })
   })
+
+  // route to render the report
+app.get('/render/:id', function(req, res) {
+  const id = req.params.id //got the id off the request
+  console.log('report:id',id)
+  db.collection('reports').findOne( // gave us all the data that the ID refers to
+    { _id: new ObjectID(id) } // object literals
+  ).then((result) => {    //write .then after you do the function call .then is also a function
+    console.log('report:', result)
+    res.render('render.ejs', { report: result}) //return the property from the fineOne function LAB INFO GOT SWITCHED TO RESULT BC OF LINE 135
+
+  }).catch (err => console.log(err))
+});
   // =============================================================================
   // AUTHENTICATE (FIRST LOGIN) ==================================================
   // =============================================================================
