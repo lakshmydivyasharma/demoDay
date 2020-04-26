@@ -1,16 +1,68 @@
+body{
+  background-color: #151515;
+  font-family: 'Montserrat', sans-serif;
+}
+
 .container{
   color: white;
-  background-color: #707070;
-  font-family: 'Oswald', sans-serif;
+  background-color: #151515;
+  font-family: 'Montserrat', sans-serif;
   margin-top: 50px;
   padding-top: 20px;
   padding-bottom: 400px;
 }
 
 h1, h3{
-  color: #af7ee4;
+  font-family: 'Montserrat', sans-serif;
+  text-align: left;
 }
 
-button, .btn{
-  color: #af7ee4;
+h5{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  text-align: left;
+  font-size: 20px;
+}
+
+h5 span img{
+  width: 3%;
+  margin-right: 4px;
+}
+
+#logoutButton{
+  color: white;
+  background-color: transparent;
+  margin-left: 85.4%;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 20px;
+  border: 1px solid white;
+}
+
+.labList{
+  margin-right: 20px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  border-radius: 9px;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.col-sm-6{
+  width: 100%;
+}
+
+.message a{
+  color: white;
+}
+
+#createLabButton{
+border-radius: 9px;
+background-color: #DFE5EB;
+color: #9B9B9B;
+margin-bottom: 20px;
+padding-left: 62.5px;
+padding-right: 62.5px;
+text-align: center;
 }

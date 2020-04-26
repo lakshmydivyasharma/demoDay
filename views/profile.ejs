@@ -4,15 +4,16 @@
   <title>Demo Day Project</title>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <link rel="stylesheet" href="styleProfile.css">
 </head>
 <body>
+
   <div class="container">
     <div class="page-header text-center">
+      <h5><span><img src="/img/Bitmap.png" alt=""></span>React <a href="/logout" id="logoutButton" class="btn btn-default btn-sm">Logout</a></h5>
       <h1><span class="fa fa-flask"></span> Labs</h1>
-      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
     <div class="row">
       <div class="col-sm-6">
@@ -24,16 +25,18 @@
             <span><%= reports[i].username%></span>
             <span><a href="/report/<%= reports[i]._id %>"><%= reports[i].labTitle %></a></span>
             <span><i id="<%= reports[i]._id %>" class="fa fa-trash" aria-hidden="true"></i></span>
-            <span><a href="/render/<%= reports[i]._id %>">Render Report</a></span>
+            <span><a id="renderReport" href="/render/<%= reports[i]._id %>">Render Report</a></span>
           </li>
+            </div>
+
           <% } %>
           <% } %>
         </ul>
         <% if (user.local.email) { %>
         <form action="/reports" method="POST">
-          <input type="text" value="<%= user.local.email %>" name="name">
-          <input type="text" placeholder="Lab Name" name="labTitle">
-          <button type="submit">Submit</button>
+          <input class="labList" type="text" value="<%= user.local.email %>" name="name">
+          <input class="labList" type="text" placeholder="Lab Name" name="labTitle"><br>
+          <button id="createLabButton" type="submit">Create Lab</button>
         </form>
       </div>
       <% } %>
