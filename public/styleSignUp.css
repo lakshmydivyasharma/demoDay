@@ -1,0 +1,119 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.leftSide{
+  width: 50%;
+  height: 100vh;
+  background-image: linear-gradient(#074ca5, #03256c);
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  float: left;
+}
+
+.leftSide h4{
+  padding-top: 4.29688%;
+  padding-left: 6.1983%;
+  font-family: 'Montserrat', sans-serif;
+font-size: 30px;
+font-weight: bold;
+letter-spacing: 1.5px;
+line-height: 37px;
+}
+
+.leftSide h4 span{
+    padding-right: 10px;
+}
+
+.leftSide h1{
+  padding-top: 39.2%;
+  font-family: 'Montserrat', sans-serif;
+  font-style: none;
+  font-weight: bold;
+  font-size: 50px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.leftSide h1 span{
+  margin-right: 20px;
+}
+
+.rightSide{
+  width: 50%;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  float: left;
+  height: 100vh;
+  color: white;
+  padding-top: 13%;
+}
+
+label{
+height: 37px;
+width: 96px;
+color: #FFFFFF;
+font-family: 'Montserrat', sans-serif;
+font-size: 30px;
+font-weight: bold;
+letter-spacing: 1.5px;
+line-height: 37px;
+text-align: center;
+margin-left: 3%;
+margin-top: 2%;
+padding-left:
+}
+
+
+.form-control{
+  width: 54%;
+  text-align: center;
+  margin-left: 3%;
+  background-color: transparent;
+  border: 2px solid #979797;
+ border-radius: 9px;
+ font-family: 'Montserrat', sans-serif;
+}
+
+.btn{
+  background-color: transparent;
+  border: 2px solid #979797;
+  margin-left: 3%;
+  margin-top: 2%;
+  width: 54%;
+  text-align: center;
+}
+
+p{
+  text-align: center;
+  margin-left: -40%;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+#signupSpan{
+  margin-left: 24.6%;
+  border-radius: 9px;
+  font-family: 'Montserrat', sans-serif;
+  border: 2px solid #979797;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+#signupSpan a{
+  color: white;
+  font-size: 20px;
+}
+
+.btn-warning:hover{
+  background: #074ca5;
+  border: #03256c;
+}

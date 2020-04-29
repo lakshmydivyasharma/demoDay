@@ -20,28 +20,28 @@
         <h3>Lab List</h3>
         <ul class="reports">
           <% for(var i=0; i< reports.length; i++) {%>
-          <% if (user.local.email == reports[i].username) { %> <!-- for all reports we have, only display the reports that were made by this user -->
-          <li class="message">
-            <span><%= reports[i].username%></span>
-            <span><a href="/report/<%= reports[i]._id %>"><%= reports[i].labTitle %></a></span>
-            <span><i id="<%= reports[i]._id %>" class="fa fa-trash" aria-hidden="true"></i></span>
-            <span><a id="renderReport" href="/render/<%= reports[i]._id %>">Render Report</a></span>
-          </li>
-            </div>
-
-          <% } %>
-          <% } %>
-        </ul>
-        <% if (user.local.email) { %>
-        <form action="/reports" method="POST">
-          <input class="labList" type="text" value="<%= user.local.email %>" name="name">
-          <input class="labList" type="text" placeholder="Lab Name" name="labTitle"><br>
-          <button id="createLabButton" type="submit">Create Lab</button>
-        </form>
+            <% if (user.local.email == reports[i].username) { %> <!-- for all reports we have, only display the reports that were made by this user -->
+              <li class="message">
+                <span><%= reports[i].username%></span>
+                <span><a href="/report/<%= reports[i]._id %>"><%= reports[i].labTitle %></a></span>
+                <span><i id="<%= reports[i]._id %>" class="fa fa-trash" aria-hidden="true"></i></span>
+                <span><a class="renderReport" href="/render/<%= reports[i]._id %>">Render Report</a></span>
+              </li>
+              <% } %>
+              <% } %>
+            </ul>
       </div>
-      <% } %>
-    </div>
-    <script src="main.js"></script>
-    <script src="https://kit.fontawesome.com/077191d827.js" crossorigin="anonymous"></script>
-</body>
-</html>
+
+          <% if (user.local.email) { %>
+            <form action="/reports" method="POST">
+              <input class="labList" type="text" value="<%= user.local.email %>" name="name">
+              <input class="labList" type="text" placeholder="Lab Name" name="labTitle"><br>
+              <button id="createLabButton" type="submit">Create Lab</button>
+            </form>
+      </div>
+          <% } %>
+        </div>
+        <script src="main.js"></script>
+        <script src="https://kit.fontawesome.com/077191d827.js" crossorigin="anonymous"></script>
+      </body>
+      </html>

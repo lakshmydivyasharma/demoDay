@@ -66,3 +66,11 @@ padding-left: 62.5px;
 padding-right: 62.5px;
 text-align: center;
 }
+
+.renderReport{
+  float: right;
+}
+
+.reports li:nth-child(even) {
+    background-color: #074ca5;
+}
